@@ -1,0 +1,22 @@
+FROM debian:latest
+
+RUN apt update
+RUN apt install python3 -y
+RUN apt install pip -y
+RUN apt install cron -y
+
+
+
+RUN pip install spotdl
+RUN spotdl --download-ffmpeg
+
+RUN mkdir /music
+
+
+RUN echo
+
+
+EXPOSE 8800
+
+CMD cd /music
+CMD tail -f /dev/null
