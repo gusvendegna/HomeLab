@@ -8,23 +8,27 @@ RUN pip3 install spotdl
 RUN spotdl --download-ffmpeg
 RUN mkdir /music
 
+RUN apk add tzdata
+RUN cp cp /usr/share/zoneinfo/America/Denver /etc/localtime
+
 #ACDC
 #RUN echo "* * * * * spotdl download https://open.spotify.com/track/08mG3Y1vljYA6bvDt4Wqkj?si=7adcb1d776d74387 --output /music" >> /var/spool/cron/crontabs/root
 
 # late Nights
-RUN echo "29 0 * * * spotdl download https://open.spotify.com/playlist/1K91E1HtWp0PKjgMtuovHO?si=dfd0c507ca9048d1 --output /music" >> /var/spool/cron/crontabs/root
+RUN echo "* /8 * * * spotdl download https://open.spotify.com/playlist/1K91E1HtWp0PKjgMtuovHO?si=dfd0c507ca9048d1 --output /music" >> /var/spool/cron/crontabs/root
 
 # b @ btp
-RUN echo "29 0 * * * spotdl download https://open.spotify.com/playlist/4iLrgpUfRpBj45tvnEa0lC?si=f66301f588184052 --output /music" >> /var/spool/cron/crontabs/root
+RUN echo "* /8 * * * spotdl download https://open.spotify.com/playlist/4iLrgpUfRpBj45tvnEa0lC?si=f66301f588184052 --output /music" >> /var/spool/cron/crontabs/root
 
 # NOtApHaSe
-RUN echo "29 0 * * * spotdl download https://open.spotify.com/playlist/1LXHvZJhuMNezUNZI9ub9U?si=bc52087277f64b70 --output /music" >> /var/spool/cron/crontabs/root
+RUN echo "* /8 * * * spotdl download https://open.spotify.com/playlist/1LXHvZJhuMNezUNZI9ub9U?si=bc52087277f64b70 --output /music" >> /var/spool/cron/crontabs/root
 
 # mob.
-RUN echo "29 0 * * * spotdl download https://open.spotify.com/playlist/7gnhk765qTbXoGkGHTN35u?si=154712f5a28b49ed --output /music" >> /var/spool/cron/crontabs/root
+RUN echo "* /8 * * * spotdl download https://open.spotify.com/playlist/7gnhk765qTbXoGkGHTN35u?si=154712f5a28b49ed --output /music" >> /var/spool/cron/crontabs/root
 
 # en el garaje
-RUN echo "29 0 * * * spotdl download https://open.spotify.com/playlist/6chwePfM44HJ9AYY3zlWuy?si=aa0db15e616941fa --output /music" >> /var/spool/cron/crontabs/root
+RUN echo "* /8 * * * spotdl download https://open.spotify.com/playlist/6chwePfM44HJ9AYY3zlWuy?si=aa0db15e616941fa --output /music" >> /var/spool/cron/crontabs/root
+
 
 
 CMD crond -f
