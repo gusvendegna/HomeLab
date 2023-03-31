@@ -1,0 +1,16 @@
+FROM alpine
+
+RUN apk -U upgrade
+RUN apk update
+RUN apk add python3
+RUN python3 -m ensurepip
+RUN pip3 install praw
+
+COPY monitor.py .
+
+
+ENV CLIENT_ID=your_key
+ENV CLIENT_SECRET=your_sec
+ENV USER_AGENT=message_it_dont_matter
+
+CMD ["python", "monitor.py"]
