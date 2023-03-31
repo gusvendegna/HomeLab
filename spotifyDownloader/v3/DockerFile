@@ -1,0 +1,16 @@
+FROM alpine
+
+RUN apk -U upgrade
+RUN apk update
+RUN apk add python3
+RUN python3 -m ensurepip
+RUN pip3 install spotdl
+RUN spotdl --download-ffmpeg
+RUN mkdir /music
+
+RUN apk add tzdata
+RUN cp /usr/share/zoneinfo/America/Denver /etc/localtime
+
+COPY monitor.py .
+
+CMD ["python3", "monitor.py"]
